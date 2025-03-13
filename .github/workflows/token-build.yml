@@ -1,0 +1,44 @@
+name: Tokens Build with Style Dictionary V4
+on:
+  workflow_dispatch:
+    inputs:
+      file_key:
+        description: 'The file key of the Figma file to be updated'
+        required: true
+
+jobs:
+  tokens-build:
+    runs-on: ubuntu-latest
+    permissions:
+      # Need to be able to create new branches and commits
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.14.0'
+
+      - name: Set NPM version
+        run: npm install -g npm@9.5.1
+
+      - name: Clone repo
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Tokens Build
+        run: yarn build
+        env:
+          FILE_KEY: ${{ github.event.inputs.file_key }}
+          FILE_KEY_PALETTE: ${{ github.event.inputs.file_key_palette }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_ACTION_VARIABLES_SYNC_FIGMA_TOKEN }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: 'feat: Update CSS Variables with latest token changes'
+          title: Update CSS Variables with latest token changes
+          body: 'Update tokens from Figma from file: https://www.figma.com/file/${{ github.event.inputs.file_key }}. Build tokens, and generate CSS Variables, Flutter things, and React Native stuff against Design Token Spec Compliant JSON files.'
+          branch: update-tokens
