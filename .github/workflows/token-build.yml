@@ -1,10 +1,4 @@
 name: Tokens Build with Style Dictionary V4
-on:
-  workflow_dispatch:
-    inputs:
-      file_key:
-        description: 'The file key of the Figma file to be updated'
-        required: true
 
 jobs:
   tokens-build:
