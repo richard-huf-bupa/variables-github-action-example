@@ -1,4 +1,4 @@
-name: Import tokens
+name: Export tokens
 on: workflow_dispatch
 
 jobs:
