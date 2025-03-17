@@ -20,6 +20,9 @@ jobs:
       - name: Clone repo
         uses: actions/checkout@v3
 
+      - name: corepack enable
+        run: corepack enable
+
       - name: Install dependencies
         run: yarn install
 
