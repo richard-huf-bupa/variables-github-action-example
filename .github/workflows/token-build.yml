@@ -1,4 +1,4 @@
-name: Tokens Build with Style Dictionary V4
+name: Tokens build
 on: [push]
 
 jobs:
