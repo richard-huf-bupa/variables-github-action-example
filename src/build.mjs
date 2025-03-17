@@ -9,7 +9,7 @@ const sd = new StyleDictionary({
     css: {
       prefix: 'rds-',
       transformGroup: 'css',
-      buildPath: 'build/',
+      buildPath: './build/',
       files: [
         {
           destination: 'variables.css',
