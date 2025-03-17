@@ -1,4 +1,5 @@
 name: Tokens Build with Style Dictionary V4
+on: [push]
 
 jobs:
   tokens-build:
