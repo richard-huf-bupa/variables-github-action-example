@@ -7,6 +7,7 @@ const sd = new StyleDictionary({
     verbosity: 'verbose'
   },
   source: ['src/tokens/**/*.json'],
+  prefix: 'rds-',
   platforms: {
     css: {
       prefix: 'rds-',
@@ -24,10 +25,11 @@ const sd = new StyleDictionary({
     },
     js: {
       transformGroup: "js",
+      buildPath: BUILD_DIR,
       files: [
         {
           format: "javascript/es6",
-          destination: BUILD_DIR
+          destination: 'tokens.js'
         }
       ]
     },
