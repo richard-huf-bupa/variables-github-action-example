@@ -10,14 +10,14 @@ jobs:
         with:
           node-version: '22.12.0'
 
-      - name: Set yarn version
-        run: npm install -g yarn
+      - name: Set NPM version
+        run: npm install -g npm@9.5.1
 
       - name: Clone repo
         uses: actions/checkout@v3
 
       - name: Install dependencies
-        run: yarn install
+        run: npm install
 
       - name: Sync tokens to Figma file
         run: npm run sync-tokens-to-figma

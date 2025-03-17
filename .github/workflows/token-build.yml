@@ -14,20 +14,17 @@ jobs:
         with:
           node-version: '22.14.0'
 
-      - name: Set yarn  version
-        run: yarn install -g
+      - name: Set NPM version
+        run: npm install -g npm@9.5.1
 
       - name: Clone repo
         uses: actions/checkout@v3
 
-      - name: corepack enable
-        run: corepack enable
-
       - name: Install dependencies
-        run: yarn install
+        run: npm install
 
       - name: Tokens Build
-        run: yarn build
+        run: npm run build
         env:
           FILE_KEY: ${{ github.event.inputs.file_key }}
           FILE_KEY_PALETTE: ${{ github.event.inputs.file_key_palette }}
