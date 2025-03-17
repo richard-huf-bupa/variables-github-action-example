@@ -1,5 +1,7 @@
 import StyleDictionary from 'style-dictionary';
 
+const BUILD_DIR = BUILD_DIR;
+
 const sd = new StyleDictionary({
   log: {
     verbosity: 'verbose'
@@ -9,7 +11,7 @@ const sd = new StyleDictionary({
     css: {
       prefix: 'rds-',
       transformGroup: 'css',
-      buildPath: './build/',
+      buildPath: BUILD_DIR,
       files: [
         {
           destination: 'variables.css',
@@ -25,14 +27,14 @@ const sd = new StyleDictionary({
       files: [
         {
           format: "javascript/es6",
-          destination: "./build/"
+          destination: BUILD_DIR
         }
       ]
     },
     json: {
       prefix: 'rds-',
       transformGroup: 'css',
-      buildPath: 'build/',
+      buildPath: BUILD_DIR,
       files: [
         {
           destination: 'tokens.json',
@@ -45,7 +47,7 @@ const sd = new StyleDictionary({
     },
     flutter: {
       transformGroup: "flutter",
-      buildPath: "build/",
+      buildPath: BUILD_DIR,
       files: [
         {
           destination: "style_dictionary.dart",
@@ -53,16 +55,6 @@ const sd = new StyleDictionary({
           options: {
             className: "StyleDictionary"
           }
-        }
-      ]
-    },
-    rn: {
-      transformGroup: "react-native",
-      buildPath: "./src/style-dictionary-dist/",
-      files: [
-        {
-          destination: "variables.js",
-          format: "javascript/es6"
         }
       ]
     }
