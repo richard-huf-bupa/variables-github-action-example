@@ -25,10 +25,7 @@ const sd = new StyleDictionary({
       files: [
         {
           format: "javascript/es6",
-          destination: "./build/",
-          filter: {
-            type: "color"
-          }
+          destination: "./build/"
         }
       ]
     },
