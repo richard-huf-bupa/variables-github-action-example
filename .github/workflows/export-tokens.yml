@@ -1,4 +1,4 @@
-name: Sync tokens to Figma
+name: Import tokens
 on: workflow_dispatch
 
 jobs:

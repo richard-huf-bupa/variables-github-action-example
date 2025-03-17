@@ -1,4 +1,4 @@
-name: Sync Figma variables to tokens
+name: Export tokens
 on: workflow_dispatch
 
 jobs:
