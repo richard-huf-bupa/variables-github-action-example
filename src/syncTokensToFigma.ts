@@ -7,10 +7,10 @@ import { green } from './utils.js'
 import { generatePostVariablesPayload, readJsonFiles } from './token_import.js'
 
 async function main() {
-  if (!process.env.PERSONAL_ACCESS_TOKEN || !process.env.FILE_KEY) {
+  if (!process.env.PERSONAL_ACCESS_TOKEN || !process.env.TOKEN_FILE_ID) {
     throw new Error('PERSONAL_ACCESS_TOKEN and FILE_KEY environemnt variables are required')
   }
-  const fileKey = process.env.FILE_KEY
+  const fileKey = process.env.TOKEN_FILE_ID
 
   const TOKENS_DIR = 'tokens'
   const tokensFiles = fs.readdirSync(TOKENS_DIR).map((file: string) => `${TOKENS_DIR}/${file}`)

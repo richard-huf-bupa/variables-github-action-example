@@ -17,7 +17,7 @@ import { tokenFilesFromLocalVariables } from './token_export.js'
  */
 
 async function main() {
-  if (!process.env.PERSONAL_ACCESS_TOKEN || !process.env.TOKEN_TOKEN_FILE_ID || !process.env.PALETTE_TOKEN_FILE_ID) {
+  if (!process.env.PERSONAL_ACCESS_TOKEN || !process.env.TOKEN_FILE_ID || !process.env.PALETTE_TOKEN_FILE_ID) {
     throw new Error('PERSONAL_ACCESS_TOKEN and TOKEN_FILE_ID environemnt variables are required')
   }
   const TOKEN_FILE_IDS = [
