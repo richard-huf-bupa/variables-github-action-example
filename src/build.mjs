@@ -20,6 +20,18 @@ const sd = new StyleDictionary({
         },
       ],
     },
+    js: {
+      transformGroup: "js",
+      files: [
+        {
+          format: "javascript/es6",
+          destination: "./build/",
+          filter: {
+            type: "color"
+          }
+        }
+      ]
+    },
     json: {
       prefix: 'rds-',
       transformGroup: 'css',
