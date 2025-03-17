@@ -25,7 +25,7 @@ const sd = new StyleDictionary({
     },
     js: {
       transformGroup: "js",
-      buildPath: BUILD_DIR,
+      buildPath: '../build/',
       files: [
         {
           format: "javascript/es6",
