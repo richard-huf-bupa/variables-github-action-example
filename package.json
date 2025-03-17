@@ -3,8 +3,8 @@
   "packageManager": "yarn@4.7.0",
   "scripts": {
     "build": "node ./src/build.mjs",
-    "tokens:import:colour": "npx tsx ./src/figma-api/syncFigmaToTokens.ts",
-    "tokens:import:palette": "npx tsx ./src/figma-api/syncFigmaToTokens.ts --isPalette=true",
+    "tokens:import:colour": "npx tsx ./src/syncFigmaToTokens.ts",
+    "tokens:import:palette": "npx tsx ./src/syncFigmaToTokens.ts --isPalette=true",
     "tokens:import": "npx tokens:import:palette && npx tokens:import:colour"
   },
   "dependencies": {

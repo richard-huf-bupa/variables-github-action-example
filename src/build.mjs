@@ -20,20 +20,20 @@ const sd = new StyleDictionary({
         },
       ],
     },
-    // json: {
-    //   prefix: 'rds-',
-    //   transformGroup: 'css',
-    //   buildPath: 'build/',
-    //   files: [
-    //     {
-    //       destination: 'tokens.json',
-    //       format: 'json/nested',
-    //       options: {
-    //         outputReferences: true
-    //       }
-    //     },
-    //   ],
-    // },
+    json: {
+      prefix: 'rds-',
+      transformGroup: 'css',
+      buildPath: 'build/',
+      files: [
+        {
+          destination: 'tokens.json',
+          format: 'json/nested',
+          options: {
+            outputReferences: true
+          }
+        },
+      ],
+    },
     flutter: {
       transformGroup: "flutter",
       buildPath: "build/",
