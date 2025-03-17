@@ -26,8 +26,8 @@ jobs:
       - name: Sync variables in Figma file to tokens
         run: npm run sync-figma-to-tokens -- --output tokens
         env:
-          TOKENS_FILE_ID: ${{ env.TOKENS_FILE_ID }}
-          PALETTE_FILE_ID: ${{ env.PALETTE_FILE_ID }}
+          TOKENS_FILE_ID: ${{ vars.TOKENS_FILE_ID }}
+          PALETTE_FILE_ID: ${{ vars.PALETTE_FILE_ID }}
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Create Pull Request

@@ -22,6 +22,6 @@ jobs:
       - name: Sync tokens to Figma file
         run: npm run sync-tokens-to-figma
         env:
-          TOKEN_FILE_ID: ${{ github.repository.TOKENS_FILE_ID }}
-          PALETTE_FILE_ID: ${{ github.repository.PALETTE_FILE_ID }}
+          TOKENS_FILE_ID: ${{ vars.TOKENS_FILE_ID }}
+          PALETTE_FILE_ID: ${{ vars.PALETTE_FILE_ID }}
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
