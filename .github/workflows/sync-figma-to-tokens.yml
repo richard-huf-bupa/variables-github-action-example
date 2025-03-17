@@ -1,39 +1,27 @@
-name: Sync Figma variables to tokens
+name: Sync tokens to Figma
 on: workflow_dispatch
 
 jobs:
-  sync-figma-to-tokens:
+  sync-tokens-to-figma:
     runs-on: ubuntu-latest
-    permissions:
-      # Need to be able to create new branches and commits
-      contents: write
-      pull-requests: write
     steps:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.16.0'
+          node-version: '22.12.0'
 
-      - name: Set NPM version
-        run: npm install -g npm@9.5.1
+      - name: Set Yarn version
+        run: npm install -g yarn
 
       - name: Clone repo
         uses: actions/checkout@v3
 
       - name: Install dependencies
-        run: npm install
+        run: yarn
 
-      - name: Sync variables in Figma file to tokens
-        run: npm run tokens:import
+      - name: Sync tokens to Figma file
+        run: yarn tokens:import
         env:
           TOKENS_FILE_ID: ${{ vars.TOKENS_FILE_ID }}
           PALETTE_FILE_ID: ${{ vars.PALETTE_FILE_ID }}
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          commit-message: Update tokens from Figma
-          title: Update tokens from Figma
-          body: 'Update tokens from Figma from file: https://www.figma.com/file/${{ github.event.inputs.file_key }}'
-          branch: update-tokens
