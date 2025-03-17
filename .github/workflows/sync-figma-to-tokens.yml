@@ -24,7 +24,7 @@ jobs:
         run: npm install
 
       - name: Sync variables in Figma file to tokens
-        run: npm run sync-figma-to-tokens -- --output tokens
+        run: npm run tokens:import
         env:
           TOKENS_FILE_ID: ${{ vars.TOKENS_FILE_ID }}
           PALETTE_FILE_ID: ${{ vars.PALETTE_FILE_ID }}
