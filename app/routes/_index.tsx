@@ -1,64 +1,136 @@
-// import { Form } from '@remix-run/react'
-import type { MetaFunction } from '@remix-run/node'
+import { type MetaFunction } from '@remix-run/node'
 import {
-  // RdsButton,
-  // RdsBox,
+  RdsButton,
+  RdsBox,
   RdsHeading,
-  // RdsSpacer,
-  // RdsTextField,
-  // RdsUnorderedList,
-  // RdsListItem,
+  RdsSpacer,
+  RdsTextField,
+  RdsContainer,
+  RdsRichTextContent,
+  RdsUnorderedList,
+  RdsListItem,
 } from '@bupa/rds.components'
-// import { styled } from '@bupa/rds.theme'
-// import * as tokens from '../data/tokens.js'
-
-// export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
-
-// export default function Page() {
-//   return (
-//     <div>
-//       <h1>Some Page</h1>
-//       <img src={banner} />
-//     </div>
-//   );
-// }
-
-// const ResultsPane = styled(RdsBox)(({ theme }) => ({
-//   padding: theme.rds.spacing(200),
-//   border: `1px solid ${theme.rds.palette.neutral.border.strong}`,
-// }))
 
 export const meta: MetaFunction = () => {
   return [{ title: 'New Remix App' }, { name: 'description', content: 'Welcome to Remix!' }]
 }
 
+// export async function loader() {
+//   return json({ query: 'response' })
+// }
+
 export default function Index() {
-  // const filterTokensView = (tokens, query) =>
-  //   tokens.filter((token) => {
-  //     return token.includes(query);
-  //   });
+  // const [searchParams] = useSearchParams()
+  // console.log('searchParams', searchParams)
+  // const query = searchParams.get('query')
 
-  // const tokens = [
-  //   {
-  //     value: "#FF0000",
-  //     description: "Warning colour",
-  //     name: "palette/red/100",
-  //   },
-  //   {
-  //     value: "#00FF00",
-  //     description: "Positive colour",
-  //     name: "palette/green/100",
-  //   },
-  // ];
+  // const query = useLoaderData<typeof loader>()
 
+  // Object.entries(tokens).filter((token) => {
+  //   console.log('token', token)
+  //   return JSON.stringify(token).includes(data.query)
+  // })
+  const handleChange = (event) => {
+    event.preventDefault()
+    console.log(event)
+  }
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="flex flex-col items-center gap-16">
-        <header className="flex flex-col items-center gap-9">
-          <RdsHeading>Tokens</RdsHeading>
-          dfgdfg hey sdfdsfdfs sdfdsf
-        </header>
+    <div>
+      <div>
+        <RdsContainer>
+          <header>
+            <RdsHeading sx={{ textSpacingTrim: 'trim-start' }}>Tokens</RdsHeading>
+            <RdsBox>
+              <RdsTextField onChange={handleChange} name="query" label="Filter" />
+              <RdsButton type="submit">Filter</RdsButton>
+            </RdsBox>
+          </header>
+
+          <RdsSpacer>
+            <RdsRichTextContent>
+              <RdsUnorderedList sx={{ listStyle: 'none' }}>
+                {Object.keys(tokens.background).map((role) => {
+                  return (
+                    <RdsListItem key={`token-${role}`}>
+                      <RdsBox
+                        sx={{
+                          display: 'grid',
+                          gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr 1fr',
+                          gap: '1rem',
+                        }}
+                        key={`card-${role}`}
+                      >
+                        {Object.keys(tokens.background[role]).map((emphasis) => {
+                          const EMPHASIS = tokens.background[role][emphasis]
+                          return (
+                            <RdsBox
+                              padding={0}
+                              sx={{
+                                boxShadow: '0 0 12px rgba(0, 0, 0, 0.4)',
+                                marginBottom: '1rem',
+                                borderRadius: '12px',
+                              }}
+                              key={`content-${emphasis}`}
+                            >
+                              {/* <RdsBox> */}
+                              <input
+                                type="color"
+                                value={EMPHASIS}
+                                style={{ width: '100%', height: '150px' }}
+                              />
+                              <RdsBox padding={200}>
+                                <h3>
+                                  {role} {emphasis}
+                                </h3>
+                                {}
+                                <p>
+                                  Color:{' '}
+                                  <pre>
+                                    <code>{EMPHASIS}</code>
+                                  </pre>
+                                </p>
+                              </RdsBox>
+                            </RdsBox>
+                          )
+                        })}
+                      </RdsBox>
+                    </RdsListItem>
+                  )
+                })}
+              </RdsUnorderedList>
+            </RdsRichTextContent>
+          </RdsSpacer>
+        </RdsContainer>
       </div>
     </div>
   )
+}
+
+const tokens = {
+  background: {
+    neutral: {
+      default: '#ffffff',
+      hovered: '#f0f1f3',
+      pressed: '#dde1e6',
+      disabled: '#dde1e6',
+    },
+    brand: {
+      default: '#0079c8',
+      hovered: '#0652ae',
+      pressed: '#00398a',
+      selected: '#00398a',
+      disabled: '#dde1e6',
+    },
+    danger: {
+      default: '#d60023',
+      hovered: '#ae132c',
+      pressed: '#861e2f',
+      disabled: '#ffffff',
+    },
+    positive: {
+      default: '#017221',
+      hovered: '#005a1a',
+      pressed: '#004412',
+    },
+  },
 }
