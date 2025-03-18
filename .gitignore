@@ -1,4 +1,12 @@
 node_modules
 .env
+<<<<<<< Updated upstream
 .yarn
 /build
+||||||| Stash base
+.yarn
+.pnp**
+.pnp.cjs
+=======
+.yarn
+>>>>>>> Stashed changes
