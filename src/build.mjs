@@ -1,6 +1,6 @@
 import StyleDictionary from 'style-dictionary';
 
-const BUILD_DIR = 'build/';
+const BUILD_DIR = 'build-tokens/';
 
 const sd = new StyleDictionary({
   log: {
