@@ -1,9 +1,6 @@
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 import type { LinksFunction } from '@remix-run/node'
 import type { MetaFunction } from 'remix'
-import { ThemeProvider, rdsBupaTheme } from '@bupa/rds.theme'
-import '@bupa/rds.tokens/css/bupa/tokens.css'
-import '@bupa/rds.assets/css/bupa-fonts.css'
 
 export const meta: MetaFunction = () => {
   return [
@@ -43,7 +40,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {typeof document === 'undefined' ? '__STYLES__' : null}
       </head>
       <body>
-        <ThemeProvider theme={rdsBupaTheme}>{children}</ThemeProvider>
+        {children}
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
